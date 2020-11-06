@@ -7,7 +7,7 @@ function App() {
     <section className='container'>
       <h3>{people.length} episodes airing today</h3>
       <List people={people}/>
-      <button>
+      <button onClick={() => setPeople([])}>
         clear all
       </button>
     </section>
