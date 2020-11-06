@@ -1,10 +1,10 @@
 import React from 'react';
 
-const List = ({people}) => {
+const List = ({anime}) => {
   return (
     <>
-      {people.map((person) => {
-        const {id, name, episode, image} = person;
+      {anime.map((epi) => {
+        const {id, name, episode, image} = epi;
         return(
           <article key={id} className='person'>
             <img src={image} alt={name}/>

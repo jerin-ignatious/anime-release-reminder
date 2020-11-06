@@ -2,12 +2,12 @@ import React, { useState } from 'react';
 import data from './data';
 import List from './List';
 function App() {
-  const [people, setPeople] = useState(data);
+  const [anime, setAnime] = useState(data);
   return<main>
     <section className='container'>
-      <h3>{people.length} episodes airing today</h3>
-      <List people={people}/>
-      <button onClick={() => setPeople([])}>
+      <h3>{anime.length} episodes airing today</h3>
+      <List anime={anime}/>
+      <button onClick={() => setAnime([])}>
         clear all
       </button>
     </section>
