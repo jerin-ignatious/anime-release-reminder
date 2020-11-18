@@ -1,3 +1,5 @@
-## Idea
+### Anime Release Reminder
 
-[https://uidesigndaily.com/](https://uidesigndaily.com/posts/sketch-birthdays-list-card-widget-day-1042)
+Created using React and Jikan Manga API
+
+Displays the anime episodes airing on the current day!
