@@ -1,7 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import List from './List';
 function App() {
+  
   const [anime, setAnime] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
+  const [isError, setIsError] = useState(false);
   const d = new Date();
   const weekday = new Array(7);
   weekday[0] = "sunday";
@@ -13,17 +16,43 @@ function App() {
   weekday[6] = "saturday";
   
   const day = weekday[d.getDay()]
+  const url = 'https://api.jikan.moe/v3/schedule/'+day;
 
   useEffect(() => {
-    const url = 'https://api.jikan.moe/v3/schedule/'+day;
-    const getAnime = async() => {
-      const response = await fetch(url);
-      const anime = await response.json();
+    
+   
+    fetch(url).then((resp) => {
+      if(resp.status >= 200 && resp.status < 300)
+      {
+        return resp.json();
+      }
+      else{
+        setIsLoading(false);
+        setIsError(true);
+        throw new Error(resp.statusText);
+      }
+    })
+    .then((anime) => {
       setAnime(anime[day]);
-    }
-    getAnime();
+      setIsLoading(false);
+    })
+    .catch((error) => console.log(error));
   }, []);
 
+  if(isLoading){
+    return<main>
+      <section className='container'>
+        <h4>Loading...</h4>
+      </section>
+    </main>
+  }
+  if(isError){
+    return<main>
+      <section className='container'>
+        <h4>Error...</h4>
+      </section>
+    </main>
+  }
   return<main>
     <section className='container'>
       <h3>{anime.length} episodes airing today</h3>
