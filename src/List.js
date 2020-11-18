@@ -4,13 +4,13 @@ const List = ({anime}) => {
   return (
     <>
       {anime.map((epi) => {
-        const {id, name, episode, image} = epi;
+        const {mal_id, title, source, image_url} = epi;
         return(
-          <article key={id} className='person'>
-            <img src={image} alt={name}/>
+          <article key={mal_id} className='person'>
+            <img src={image_url} alt={title}/>
             <div>
-              <h4>{name}</h4>
-              <p>Episode {episode}</p>
+              <h4>{title}</h4>
+              <p>Source: {source}</p>
             </div>
           </article>
         );
