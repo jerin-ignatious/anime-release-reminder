@@ -17,12 +17,13 @@ function App() {
   
   const day = weekday[d.getDay()]
   const url = 'https://api.jikan.moe/v3/schedule/'+day;
-
+  const STATUS_SUCESS = 200;
+  const STATUS_FAIL = 300;
   useEffect(() => {
     
    
     fetch(url).then((resp) => {
-      if(resp.status >= 200 && resp.status < 300)
+      if(resp.status >= STATUS_SUCESS && resp.status < STATUS_FAIL)
       {
         return resp.json();
       }
