@@ -58,7 +58,7 @@ function App() {
       <h3>{anime.length} episodes airing today</h3>
       <List anime={anime}/>
       <button onClick={() => setAnime([])}>
-        clear al
+        clear all
       </button>
     </section>
   </main>;
