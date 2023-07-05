@@ -16,7 +16,7 @@ function App() {
   weekday[6] = "saturday";
   
   const day = weekday[d.getDay()]
-  const url = 'https://api.jikan.moe/v3/schedule/'+day;
+  const url = 'https://api.jikan.moe/v4/schedules/'+day;
   const STATUS_SUCESS = 200;
   const STATUS_FAIL = 300;
   useEffect(() => {
@@ -34,11 +34,11 @@ function App() {
       }
     })
     .then((anime) => {
-      setAnime(anime[day]);
+      setAnime(anime.data);
       setIsLoading(false);
     })
     .catch((error) => console.log(error));
-  }, []);
+  }, [url]);
 
   if(isLoading){
     return<main>
@@ -56,7 +56,6 @@ function App() {
   }
   return<main>
     <section className='container'>
-      <h3>{anime.length} episodes airing today</h3>
       <List anime={anime}/>
       <button onClick={() => setAnime([])}>
         clear all

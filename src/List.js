@@ -4,12 +4,12 @@ const List = ({anime}) => {
   return (
     <>
       {anime.map((epi) => {
-        const {mal_id, title, source, image_url} = epi;
+        const {mal_id, titles, source, images} = epi;
         return(
           <article key={mal_id} className='person'>
-            <img src={image_url} alt={title}/>
+            <img src={images.jpg.image_url} alt={titles.title}/>
             <div>
-              <h4>{title}</h4>
+              <h4>{titles[0].title}</h4>
               <p>Source: {source}</p>
             </div>
           </article>
